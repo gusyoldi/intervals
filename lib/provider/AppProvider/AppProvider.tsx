@@ -1,5 +1,4 @@
-import SideBar from "@/ui/Button/NavBar/SideBar";
-import { NextUIProvider } from "@nextui-org/react";
+import SideBar from "@/ui/SideBar/SideBar";
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -8,9 +7,7 @@ type AppProviderProps = {
 const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <>
-      <NextUIProvider>
-        <main>{children}</main>;
-      </NextUIProvider>
+      <div>{children}</div>
     </>
   );
 };
