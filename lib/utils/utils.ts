@@ -8,7 +8,6 @@ export const generarNotasRandom = (notas: Nota[]) => {
     const notaRandom1 = notas[numeroRandom1];
     const notaRandom2 = notas[numeroRandom2];
     
-
     return [notaRandom1, notaRandom2]
 }
 

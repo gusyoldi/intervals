@@ -1,4 +1,6 @@
-export const NOTAS = [
+import { Nota } from "../models/data";
+
+export const NOTAS: Nota[] = [
   "C",
   "C#",
   "D",

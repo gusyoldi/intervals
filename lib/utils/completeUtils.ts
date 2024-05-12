@@ -1,48 +1,48 @@
-import { INTERVALOS, NOTAS } from "../../../music-app-server/data/db.js";
+// import { INTERVALOS, NOTAS } from "../../../music-app-server/data/db.js";
 
-export const obtenerIntervalo = (notas) => {
-  const [primerNota, segundaNota] = notas;
+// export const obtenerIntervalo = (notas) => {
+//   const [primerNota, segundaNota] = notas;
 
-  const posicionPrimerNota = posicionDeLaNotaEnLaEscala(primerNota);
-  const posicionSegundaNota = posicionDeLaNotaEnLaEscala(segundaNota);
+//   const posicionPrimerNota = posicionDeLaNotaEnLaEscala(primerNota);
+//   const posicionSegundaNota = posicionDeLaNotaEnLaEscala(segundaNota);
 
-  const distanciaEnSemitonos = calcularDistanciaEnSemitonos(
-    posicionSegundaNota,
-    posicionPrimerNota
-  );
+//   const distanciaEnSemitonos = calcularDistanciaEnSemitonos(
+//     posicionSegundaNota,
+//     posicionPrimerNota
+//   );
 
-  const buscarIntervaloPorDistanciaEnSemitonos = (distanciaEnSt) =>
-    INTERVALOS.find(({ semitonos }) => semitonos === distanciaEnSt);
+//   const buscarIntervaloPorDistanciaEnSemitonos = (distanciaEnSt) =>
+//     INTERVALOS.find(({ semitonos }) => semitonos === distanciaEnSt);
 
-  const intervalo =
-    buscarIntervaloPorDistanciaEnSemitonos(distanciaEnSemitonos);
+//   const intervalo =
+//     buscarIntervaloPorDistanciaEnSemitonos(distanciaEnSemitonos);
 
-  return intervalo;
-};
+//   return intervalo;
+// };
 
-export const generarNotaRandom = () => {
-  const numeroRandom = Math.trunc(Math.random() * 12 + 1);
-  const notaRandom = NOTAS[numeroRandom];
+// export const generarNotaRandom = () => {
+//   const numeroRandom = Math.trunc(Math.random() * 12 + 1);
+//   const notaRandom = NOTAS[numeroRandom];
 
-  return {
-    nota: notaRandom,
-  };
-};
+//   return {
+//     nota: notaRandom,
+//   };
+// };
 
-const posicionDeLaNotaEnLaEscala = (notaBuscada) =>
-  NOTAS.findIndex((nota) => nota === notaBuscada);
+// const posicionDeLaNotaEnLaEscala = (notaBuscada) =>
+//   NOTAS.findIndex((nota) => nota === notaBuscada);
 
-const calcularIntervaloOpuesto = (intervalo) => 12 - Math.abs(intervalo);
+// const calcularIntervaloOpuesto = (intervalo) => 12 - Math.abs(intervalo);
 
-const calcularDistanciaEnSemitonos = (
-  posicionSegundaNota,
-  posicionPrimerNota
-) => {
-  const distanciaEnSemitonos = posicionSegundaNota - posicionPrimerNota;
+// const calcularDistanciaEnSemitonos = (
+//   posicionSegundaNota,
+//   posicionPrimerNota
+// ) => {
+//   const distanciaEnSemitonos = posicionSegundaNota - posicionPrimerNota;
 
-  if (distanciaEnSemitonos < 0) {
-    return calcularIntervaloOpuesto(distanciaEnSemitonos);
-  } else {
-    return distanciaEnSemitonos;
-  }
-};
+//   if (distanciaEnSemitonos < 0) {
+//     return calcularIntervaloOpuesto(distanciaEnSemitonos);
+//   } else {
+//     return distanciaEnSemitonos;
+//   }
+// };
