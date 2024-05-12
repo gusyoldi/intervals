@@ -1,11 +1,11 @@
 import Display from "@/components/ui/Display/Display";
 import Keyboard from "@/components/ui/Keyboard/Keyboard";
 import { Nota } from "@/lib/models/data";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { NOTAS, INTERVALOS } from "@/lib/data/db";
 import { generarNotasRandom } from "@/lib/utils/utils";
 
-export default async function HomePage() {
+export default async function Page() {
   const notasRandom: Nota[] = generarNotasRandom(NOTAS);
 
   return (

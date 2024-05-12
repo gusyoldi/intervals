@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default async function Page() {
+export default async function HomePage() {
   return (
-    <ul>
-      <li>
-        <Button variant={"default"}>
+    <ul className="flex-col justify-center items-center gap-4 bg-slate-300 p-4 rounded-md shadow-md max-w-60 m-auto mt-10">
+      <li className="text-center">
+        <Button variant="default">
           <Link href="/adivinar-intervalo">Adivinar intervalo</Link>
         </Button>
       </li>
