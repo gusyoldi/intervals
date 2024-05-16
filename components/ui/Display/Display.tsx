@@ -1,16 +1,18 @@
 "use client";
 import { FaArrowRight } from "react-icons/fa";
-import { Nota } from "../../../lib/models/data";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { useState } from "react";
+import useAdivinarIntervalo from "@/app/adivinar-intervalo/hooks/useAdivinarIntervalo";
 
-interface DisplayProps {
-  notas: Nota[];
-}
+// interface DisplayProps {
+//   notas: Nota[];
+// }
 
-export const Display = ({ notas }: DisplayProps) => {
-  const [notaRandom1, notaRandom2] = notas;
+export const Display = () => {
+  return null;
   const [showSuccess, setShowSucess] = useState(false);
+  // const { notasRandom } = useAdivinarIntervalo();
+  // const [notaRandom1, notaRandom2] = notasRandom;
 
   const successIcon = (
     <FaRegCheckCircle className="text-9xl m-auto" color="#5cb85c" />

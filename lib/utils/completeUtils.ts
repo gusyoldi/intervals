@@ -1,48 +1,51 @@
-// import { INTERVALOS, NOTAS } from "../../../music-app-server/data/db.js";
+import { INTERVALOS, NOTAS } from "../data/db";
+import { IntervaloObj, Nota, Semitono } from "../models/data";
 
-// export const obtenerIntervalo = (notas) => {
-//   const [primerNota, segundaNota] = notas;
+export const obtenerIntervalo = (notas: Nota[]): IntervaloObj => {
+  const [primerNota, segundaNota] = notas;
 
-//   const posicionPrimerNota = posicionDeLaNotaEnLaEscala(primerNota);
-//   const posicionSegundaNota = posicionDeLaNotaEnLaEscala(segundaNota);
+  const posicionPrimerNota = posicionDeLaNotaEnLaEscala(primerNota);
+  const posicionSegundaNota = posicionDeLaNotaEnLaEscala(segundaNota);
 
-//   const distanciaEnSemitonos = calcularDistanciaEnSemitonos(
-//     posicionSegundaNota,
-//     posicionPrimerNota
-//   );
+  const distanciaEnSemitonos = calcularDistanciaEnSemitonos(
+    posicionSegundaNota,
+    posicionPrimerNota
+  );
 
-//   const buscarIntervaloPorDistanciaEnSemitonos = (distanciaEnSt) =>
-//     INTERVALOS.find(({ semitonos }) => semitonos === distanciaEnSt);
+  const buscarIntervaloPorDistanciaEnSemitonos = (distanciaEnSt) =>
+    INTERVALOS.find(({ semitonos }) => semitonos === distanciaEnSt);
 
-//   const intervalo =
-//     buscarIntervaloPorDistanciaEnSemitonos(distanciaEnSemitonos);
+  const intervalo =
+    buscarIntervaloPorDistanciaEnSemitonos(distanciaEnSemitonos);
 
-//   return intervalo;
-// };
+  return intervalo;
+};
 
-// export const generarNotaRandom = () => {
-//   const numeroRandom = Math.trunc(Math.random() * 12 + 1);
-//   const notaRandom = NOTAS[numeroRandom];
+export const generarNotasRandom = (): Nota[] => {
+  const obtenerNumeroRandom = () =>  Math.trunc(Math.random() * 12 + 1);
+  const numeroRandom1 = obtenerNumeroRandom()
+  const numeroRandom2 = obtenerNumeroRandom()
 
-//   return {
-//     nota: notaRandom,
-//   };
-// };
+  const notaRandom1 = NOTAS[numeroRandom1];
+  const notaRandom2 = NOTAS[numeroRandom2];
+  
+  return [notaRandom1, notaRandom2]
+};
 
-// const posicionDeLaNotaEnLaEscala = (notaBuscada) =>
-//   NOTAS.findIndex((nota) => nota === notaBuscada);
+export const posicionDeLaNotaEnLaEscala = (notaBuscada: Nota): number =>
+  NOTAS.findIndex((nota) => nota === notaBuscada) + 1;
 
-// const calcularIntervaloOpuesto = (intervalo) => 12 - Math.abs(intervalo);
+export const calcularIntervaloOpuesto = (intervalo: number) => 12 - Math.abs(intervalo);
 
-// const calcularDistanciaEnSemitonos = (
-//   posicionSegundaNota,
-//   posicionPrimerNota
-// ) => {
-//   const distanciaEnSemitonos = posicionSegundaNota - posicionPrimerNota;
+export const calcularDistanciaEnSemitonos = (
+  posicionSegundaNota: number,
+  posicionPrimerNota: number
+): number => {
+  const distanciaEnSemitonos = posicionSegundaNota - posicionPrimerNota;
 
-//   if (distanciaEnSemitonos < 0) {
-//     return calcularIntervaloOpuesto(distanciaEnSemitonos);
-//   } else {
-//     return distanciaEnSemitonos;
-//   }
-// };
+  if (distanciaEnSemitonos < 0) {
+    return calcularIntervaloOpuesto(distanciaEnSemitonos);
+  } else {
+    return distanciaEnSemitonos;
+  }
+};
