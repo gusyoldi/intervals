@@ -1,21 +1,26 @@
 "use client";
-import { FaArrowRight } from "react-icons/fa";
-import { FaRegCheckCircle } from "react-icons/fa";
+
+import { CheckCircledIcon, ThickArrowRightIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import useAdivinarIntervalo from "@/app/adivinar-intervalo/hooks/useAdivinarIntervalo";
+import { useAdivinarIntervaloStore } from "@/lib/store/useAdivinarIntervaloStore";
 
 // interface DisplayProps {
 //   notas: Nota[];
 // }
 
 export const Display = () => {
-  return null;
   const [showSuccess, setShowSucess] = useState(false);
-  // const { notasRandom } = useAdivinarIntervalo();
-  // const [notaRandom1, notaRandom2] = notasRandom;
+  // const intervaloElegido = useAdivinarIntervaloStore(
+  //   (state) => state.intervaloElegido
+  // );
+  const notasRandom = ["C", "E"];
+  // const notasRandom = generarNotasRandom();
+  // const respuestaCorrecta = obtenerIntervalo(notasRandom);
+
+  const [notaRandom1, notaRandom2] = notasRandom;
 
   const successIcon = (
-    <FaRegCheckCircle className="text-9xl m-auto" color="#5cb85c" />
+    <CheckCircledIcon className="text-9xl m-auto" color="#5cb85c" />
   );
 
   return (
@@ -26,7 +31,7 @@ export const Display = () => {
         <>
           <p className=" text-9xl font-bold">{notaRandom1}</p>
           <span className="text-4xl">
-            <FaArrowRight />
+            <ThickArrowRightIcon />
           </span>
           <p className="text-8xl font-bold text-red-500">{notaRandom2}</p>
         </>

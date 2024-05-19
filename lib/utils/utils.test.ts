@@ -5,7 +5,7 @@ import {
   generarNotasRandom,
   obtenerIntervalo,
   posicionDeLaNotaEnLaEscala,
-} from "./completeUtils";
+} from "./utils";
 const fn = vi.fn();
 
 test("devuelve el nombre y la distancia en semitonos entre dos notas", () => {
