@@ -8,6 +8,8 @@ import {
 } from "./utils";
 const fn = vi.fn();
 
+
+describe('Intervalos utils', () => {
 test("devuelve el nombre y la distancia en semitonos entre dos notas", () => {
   const intervalo = obtenerIntervalo(["C", "E"]);
   const intervalo2 = obtenerIntervalo(["C", "F"]);
@@ -45,3 +47,4 @@ test("devuelve la distancia en semitonos entre dos notas", () => {
     // expect(semitonos3).toBeNull();
     // console.log(calcularDistanciaEnSemitonos(1, 13));
 });
+})

@@ -1,42 +1,43 @@
 "use client";
 
-import { CheckCircledIcon, ThickArrowRightIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
-import { useAdivinarIntervaloStore } from "@/lib/store/useAdivinarIntervaloStore";
+import { IntervaloObj, Nota } from "@/lib/models/data";
+import { ThickArrowRightIcon } from "@radix-ui/react-icons";
+import { useEffect, useState } from "react";
+import ResponseModal from "../ResponseModal/ResponseModal";
 
-// interface DisplayProps {
-//   notas: Nota[];
-// }
+interface DisplayProps {
+  notasRandom: Nota[];
+  esRespuestaCorrecta: boolean | null
+  intervaloElegido: IntervaloObj
+}
 
-export const Display = () => {
-  const [showSuccess, setShowSucess] = useState(false);
-  // const intervaloElegido = useAdivinarIntervaloStore(
-  //   (state) => state.intervaloElegido
-  // );
-  const notasRandom = ["C", "E"];
-  // const notasRandom = generarNotasRandom();
-  // const respuestaCorrecta = obtenerIntervalo(notasRandom);
-
+export const Display = ({notasRandom, intervaloElegido, esRespuestaCorrecta}: DisplayProps) => {
   const [notaRandom1, notaRandom2] = notasRandom;
+  const [showModal, setShowModal] = useState(true)
 
-  const successIcon = (
-    <CheckCircledIcon className="text-9xl m-auto" color="#5cb85c" />
-  );
+  useEffect(() => {
+    setShowModal(true)
+    setTimeout(() => {
+      setShowModal(false)
+    }, 600)
+  }, [intervaloElegido])
+
+  console.log(intervaloElegido)
+
+  if(showModal){
+    return <div className="flex justify-center items-center gap-8 p-8 h-96">
+    <ResponseModal respuesta={esRespuestaCorrecta} intervaloElegido={intervaloElegido} showModal={showModal} onShowModal={setShowModal}/>
+    </div>
+  }
 
   return (
-    <div className="flex justify-center items-center gap-8 p-10 min-h-40">
-      {showSuccess ? (
-        successIcon
-      ) : (
-        <>
-          <p className=" text-9xl font-bold">{notaRandom1}</p>
-          <span className="text-4xl">
-            <ThickArrowRightIcon />
-          </span>
-          <p className="text-8xl font-bold text-red-500">{notaRandom2}</p>
-        </>
-      )}
-    </div>
+      <div className="flex justify-center items-center gap-8 p-8 h-96">
+        <p className=" text-9xl font-bold">{notaRandom1}</p>
+        <span className="text-4xl">
+          <ThickArrowRightIcon className="animate-bounce-right w-12 h-12" />
+        </span>
+        <p className="text-8xl font-bold text-red-500">{notaRandom2}</p>
+      </div>
   );
 };
 

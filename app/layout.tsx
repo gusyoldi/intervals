@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Karla } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/lib/providers/ThemeProvider";
 import { ModeToggle } from "@/ui/dark-theme-toggle/dark-theme-toggle";
 
-const inter = Inter({ subsets: ["latin"] });
+const karla = Karla({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={karla.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <ModeToggle />
           {children}

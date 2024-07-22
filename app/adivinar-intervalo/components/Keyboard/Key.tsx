@@ -1,27 +1,25 @@
 "use client";
 
-import { useAdivinarIntervaloStore } from "@/lib/store/useAdivinarIntervaloStore";
+import { IntervaloStr } from "@/lib/models/data";
 import { Button } from "@/ui/button/button";
 
 interface KeyProps {
   name: string;
+  setIntervaloElegido: (intervaloElegido: IntervaloStr) => void;
 }
-const Key = ({ name }: KeyProps) => {
-  const elegirIntervalo = useAdivinarIntervaloStore(
-    (state) => state.elegirIntervalo
-  );
+const Key = ({ name, setIntervaloElegido }: KeyProps) => {
+
   //Cambiar el tipo any
   function handleClick(e: any) {
-    elegirIntervalo(e.target.value);
-    // console.log("Click", e.target.value);
+    setIntervaloElegido(e.target.value)
   }
 
   return (
     <Button
       onClick={handleClick}
       value={name}
-      // className="rounded-md shadow-md dark: bg-black"
-      variant={"destructive"}
+      className="text-primary-foreground"
+      variant={"default"}
     >
       {name}
     </Button>

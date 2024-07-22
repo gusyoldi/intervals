@@ -1,4 +1,4 @@
-import { Button } from "@/ui/ui/button/button";
+import { Button } from "@/ui/button/button";
 import Link from "next/link";
 
 export default async function HomePage() {
